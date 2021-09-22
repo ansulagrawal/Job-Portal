@@ -8,15 +8,18 @@ $conn = mysqli_connect($server, $username, $password,$database);
 
 if($conn -> connect_error){
    die("Connection failed:" .$conn -> connect_error);
+} else{
+   echo"";
 }
-echo"";
+
 session_start();
+
+//Register Function
 if(isset($_POST['submit'])){
    $name = $_POST['name'];
    $email = $_POST['email'];
    $number = $_POST['phone_no'];
    $password = $_POST['password'];
-
    $sql = "INSERT INTO `users`(`Name`, `email`, `phone_no`, `password`) VALUES ('$name','$email','$number','$password')";
    if(mysqli_query($conn, $sql)){
       echo "Records incerted sucessfully.";
@@ -26,7 +29,7 @@ if(isset($_POST['submit'])){
    }
 }
 
-// session_start();
+//Login Function
 if(isset($_POST['Login'])){
    $email = $_POST['email'];
    $password = $_POST['password'];
@@ -41,5 +44,35 @@ if(isset($_POST['Login'])){
       $error = "Incorrect email id or password.";
    }
 }
-mysqli_close($conn);
+
+// Job Creation Fun
+if(isset($_POST['jobCreate'])){
+   $cName = $_POST['cName'];
+   $pos = $_POST['pos'];
+   $jDec = $_POST['jDesc'];
+   $ctc = $_POST['ctc'];
+   $skills = $_POST['skills'];
+   $sql = "INSERT INTO `jobs`(`cname`, `position`, `jdesc`, `skills`, `ctc`) VALUES ('$cName','$pos','$jDec', '$skills', '$ctc')";
+   if(mysqli_query($conn, $sql)){
+      echo "";
+   } else {
+      echo "ERROR: Failed to post the query $sql. ". mysqli_error($conn);
+   }
+}
+
+// Apply for Job:
+   if(isset($_POST['applyJob'])){
+      $cName = $_POST['cname'];
+      $pos = $_POST['pos'];
+      $resume = $_POST['resume'];
+      $ctc = $_POST['ctc'];
+      $sql = "INSERT INTO `appliedcandidates`(`cName`, `pos`, `resume`, `ctc`) VALUES ('$cName','$pos','$resume','$ctc')";
+      if(mysqli_query($conn,$sql)){
+         echo "";
+      } else{
+         echo "ERROR: Failed to apply for the job $sql. ". mysqli_error($conn);
+      }
+   }
+
+// mysqli_close($conn);
 ?>

@@ -1,3 +1,4 @@
+<?php include ('config.php') ?>
 <?php include "header.php" ?>
       <div class="content">
          <p class="mt-3">
@@ -7,24 +8,24 @@
          </p>
          <div class="collapse" id="collapseExample">
             <div class="card card-body">
-               <form>
+               <form method="POST">
                   <div class="mb-3">
                      <label for="companyName" class="form-label">Candidate Name</label>
-                     <input type="text" class="form-control" id="companyName">
+                     <input type="text" class="form-control" id="companyName" name="cname">
                   </div>
                   <div class="mb-3">
                      <label for="companyPosition" class="form-label">Position</label>
-                     <input type="text" class="form-control" id="companyPosition">
+                     <input type="text" class="form-control" id="companyPosition" name="pos">
                   </div>
                   <div class="mb-3">
                      <label for="jobDesc" class="form-label">Resume</label>
-                     <textarea class="form-control"  id="jobDesc" cols="30" rows="10"></textarea>
+                     <textarea class="form-control"  id="jobDesc" cols="30" rows="10" name="resume"></textarea>
                   </div>
                   <div class="mb-3">
                      <label for="ctc" class="form-label">CTC</label>
-                     <input type="text" class="form-control" id="ctc">
+                     <input type="text" class="form-control" id="ctc" name="ctc">
                   </div>
-                  <button type="submit" class="btn btn-primary">Submit</button>
+                  <button type="submit" class="btn btn-primary" name="applyJob">Submit</button>
                </form>            
             </div>
          </div>
@@ -39,12 +40,23 @@
                </tr>
             </thead>
             <tbody>
-               <tr>
-                  <th scope="row">1</th>
-                  <td>Ram</td>
-                  <td>Software Enginier</td>
-                  <td><a class="fa fa-download text-center" style="color: black;"></a></td>
-               </tr>
+               <?php
+                  $sql = "Select cName, pos, resume from appliedcandidates";
+                  $result = mysqli_query($conn, $sql);
+                  if($result ->num_rows > 0){
+                     $i = 0;
+                     while($rows =$result->fetch_assoc()){
+                        echo"<tr>
+                              <th scope='row'>".++$i."</th>
+                              <td>".$rows['cName']."</td>
+                              <td>".$rows['pos']."</td>
+                              <td><a class='fa fa-download text-center' style='color: black;'></a>  ".$rows['resume']."</td>
+                           </tr>";
+                     }
+                  } else{
+                     echo"";
+                  }
+               ?>
             </tbody>
             </table>
       </div>
