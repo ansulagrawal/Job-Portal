@@ -39,13 +39,14 @@
                   <th scope="col">#</th>
                   <th scope="col">Company Name</th>
                   <th scope="col">Position</th>
+                  <th scope="col">Skills Required</th>
                   <th scope="col">CTC</th>
                   
                </tr>
             </thead>
             <tbody>
                <?php
-                  $sql = "Select cname, position, ctc from jobs";
+                  $sql = "Select cname, position, skills, ctc from jobs";
                   $result = mysqli_query($conn, $sql);
                   if($result ->num_rows > 0){
                      $i = 0;
@@ -54,6 +55,7 @@
                               <th scope='row'>".++$i."</th>
                               <td>".$rows['cname']."</td>
                               <td>".$rows['position']."</td>
+                              <td>".$rows['skills']."</td>
                               <td>".$rows['ctc']."</td>
                            </tr>";
                      }

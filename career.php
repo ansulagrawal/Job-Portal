@@ -7,6 +7,8 @@
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
       <!-- Bootstrap CSS -->
       <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
+
+      <link rel="stylesheet" href="./components/CSS/career.css">
       <title>Career</title>
    </head>
    <body>
@@ -17,18 +19,42 @@
             <h5 class="card-text ps-5  ">Best Jobs available matching your skills</h5>
          </div>
       </div>
-      <div class="ms-3">
-         <div class="card p-3" style="width: 30rem; box-shadow: 10px 10px 8px 10px #8888884d;">
-            <div class="text-center">
-               <h1 class="mb-3">PHP Developer</h1>
-               <h3 class="mb-3">Company Name</h3>
-            </div>
-            <p class="mb-2">A card is a flexible and extensible content container. It includes options for headers and footers, a wide variety of content, contextual background colors, and powerful display options. If you’re familiar with Bootstrap 3, cards replace our old panels, wells, and thumbnails. Similar functionality to those components is available as modifier classes for cards.</p>
-            <span class="mb-2"><strong>Skills Required:</strong> HTML5,CSS,JavaScript, and PHP</span>
-            <span class="mb-2"><strong>Job Location: </strong>Delhi</span>
-            <span class="mb-2"><strong>CTC: </strong> 3-5 LPA</span>
-         </div>
+      <div class=" m-5 job-container">
+            <?php
+            $sql = "Select cname, position, jdesc, skills, ctc from jobs";
+            $result = mysqli_query($conn, $sql);
+            if($result ->num_rows > 0){
+               while($rows =$result->fetch_assoc()){
+                  echo'
+                     <div class="job-tile">
+                        <div class="rolename">
+                           <span class="fs-3 fw-bolder">'.$rows["position"].'</span>
+                           <span class="ms-3"> - '.$rows["cname"].'</span>
+                        </div>
+                        <div class="rolename">
+                           <span class="fw-normal"><strong class="fw-bold">Skills Required: </strong>'.$rows["skills"].'</span>
+                        </div>
+                        <div class="description">
+                           <strong class="fw-bold">Description:</strong>
+                           <span class="fw-normal">'.$rows["jdesc"].'</span>
+                        </div>
+                        <div class="buttons">
+                           <div class="button apply-now">
+                              Apply Now
+                           </div>
+                           <div class="button message-me">
+                              Message
+                           </div>
+                        </div>
+                     </div>
+                  ';
+               }
+            }else{
+               echo"";
+            }
+            ?>
       </div>
+
 
       <!-- Option 1: Bootstrap Bundle with Popper -->
       <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous"></script>
