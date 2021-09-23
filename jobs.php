@@ -1,37 +1,45 @@
 <?php include ('config.php') ?>
 <?php include "header.php" ?>
+      <div class="sidebar mt-2">
+         <a href="index.php">Job</a>
+         <a class="active" href="jobs.php">Candidates Applied</a>
+         <a href="#contact">Contact</a>
+         <a href="#about">About</a>
+      </div>
       <div class="content">
-         <table class="table table-striped">
-            <thead>
-               <tr>
-                  <th scope="col">#</th>
-                  <th scope="col">Candidate Name</th>
-                  <th scope="col">Applied For</th>
-                  <th scope="col">Quaification</th>
-                  <th scope="col">Passout Year</th>                  
-               </tr>
-            </thead>
-            <tbody>
-               <?php
-                  $sql = "Select `Name`, `Applying For`, `Qualification`, `Year Passout` FROM `canditate`";
-                  $result = mysqli_query($conn, $sql);
-                  if($result ->num_rows > 0){
-                     $i = 0;
-                     while($rows =$result->fetch_assoc()){
-                        echo"<tr>
-                              <th scope='row'>".++$i."</th>
-                              <td>".$rows['Name']."</td>
-                              <td>".$rows['Applying For']."</td>
-                              <td>".$rows['Qualification']."</td>
-                              <td>".$rows['Year Passout']."</td>
-                           </tr>";
+         <div class="mt-4">
+            <table class="table table-striped">
+               <thead>
+                  <tr>
+                     <th scope="col">#</th>
+                     <th scope="col">Candidate Name</th>
+                     <th scope="col">Applied For</th>
+                     <th scope="col">Quaification</th>
+                     <th scope="col">Passout Year</th>                  
+                  </tr>
+               </thead>
+               <tbody>
+                  <?php
+                     $sql = "Select `Name`, `Applying For`, `Qualification`, `Year Passout` FROM `canditate`";
+                     $result = mysqli_query($conn, $sql);
+                     if($result ->num_rows > 0){
+                        $i = 0;
+                        while($rows =$result->fetch_assoc()){
+                           echo"<tr>
+                                 <th scope='row'>".++$i."</th>
+                                 <td>".$rows['Name']."</td>
+                                 <td>".$rows['Applying For']."</td>
+                                 <td>".$rows['Qualification']."</td>
+                                 <td>".$rows['Year Passout']."</td>
+                              </tr>";
+                        }
+                     } else{
+                        echo"";
                      }
-                  } else{
-                     echo"";
-                  }
-               ?>
-            </tbody>
+                  ?>
+               </tbody>
             </table>
+         </div>
       </div>
 
       <!-- Option 1: Bootstrap Bundle with Popper -->

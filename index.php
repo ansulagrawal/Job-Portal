@@ -1,5 +1,11 @@
 <?php include ('config.php') ?>
 <?php include "header.php"?>
+      <div class="sidebar mt-2">
+         <a class="active" href="index.php">Job</a>
+         <a href="jobs.php">Candidates Applied</a>
+         <a href="#contact">Contact</a>
+         <a href="#about">About</a>
+      </div>
       <div class="content">
          <p class="mt-3">
             <a class="btn btn-primary" data-bs-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">

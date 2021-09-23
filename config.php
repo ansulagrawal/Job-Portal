@@ -60,20 +60,6 @@ if(isset($_POST['jobCreate'])){
    }
 }
 
-// Apply for Job: Admin Side
-   if(isset($_POST['applyJob'])){
-      $cName = $_POST['cname'];
-      $pos = $_POST['pos'];
-      $resume = $_POST['resume'];
-      $ctc = $_POST['ctc'];
-      $sql = "INSERT INTO `appliedcandidates`(`cName`, `pos`, `resume`, `ctc`) VALUES ('$cName','$pos','$resume','$ctc')";
-      if(mysqli_query($conn,$sql)){
-         echo "";
-      } else{
-         echo "ERROR: Failed to apply for the job $sql. ". mysqli_error($conn);
-      }
-   }
-
 //Apply for Job Candidate side:
 if(isset($_POST['appliedJob'])){
    $canName = $_POST['canname'];
