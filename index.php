@@ -3,8 +3,6 @@
       <div class="sidebar mt-2">
          <a class="active" href="index.php">Job</a>
          <a href="jobs.php">Candidates Applied</a>
-         <a href="#contact">Contact</a>
-         <a href="#about">About</a>
       </div>
       <div class="content">
          <p class="mt-3">
