@@ -47,28 +47,8 @@
 }
 
 .buttons {
-  color: black;
   margin-top: 20px;
-  display: flex;
-  justify-content: space-between;
   height: 45px;
-}
-
-.button {
-  flex: 1;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  border-radius: 10px;
-  color: #96939b;
-  background-color: #2e2e39;
-  font-size: 14px;
-}
-
-.apply-now {
-  color: white;
-  background-color: #3060ff;
-  margin-right: 15px;
 }
 
 @media screen and (max-width: 930px) {

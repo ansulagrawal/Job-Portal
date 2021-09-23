@@ -45,7 +45,7 @@ if(isset($_POST['Login'])){
    }
 }
 
-// Job Creation Fun
+// Job Creation Fun Admin Side
 if(isset($_POST['jobCreate'])){
    $cName = $_POST['cName'];
    $pos = $_POST['pos'];
@@ -60,7 +60,7 @@ if(isset($_POST['jobCreate'])){
    }
 }
 
-// Apply for Job:
+// Apply for Job: Admin Side
    if(isset($_POST['applyJob'])){
       $cName = $_POST['cname'];
       $pos = $_POST['pos'];
@@ -73,6 +73,21 @@ if(isset($_POST['jobCreate'])){
          echo "ERROR: Failed to apply for the job $sql. ". mysqli_error($conn);
       }
    }
+
+//Apply for Job Candidate side:
+if(isset($_POST['appliedJob'])){
+   $canName = $_POST['canname'];
+   $compName = $_POST['compname'];
+   $qual = $_POST['qual'];
+   $yearPass = $_POST['yearPass'];
+   $resume = $_POST['resume'];
+   $sql = "INSERT INTO `canditate`(`Name`, `Applying For`, `Qualification`, `Year Passout`, `Resume Link`) VALUES ('$canName','$compName', 'qual', '$yearPass', '$resume')";
+   if(mysqli_query($conn,$sql)){
+      echo "";
+   } else{
+      echo "ERROR: Failed to apply for the job $sql. ". mysqli_error($conn);
+   }
+}
 
 // mysqli_close($conn);
 ?>

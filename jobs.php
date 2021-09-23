@@ -1,56 +1,29 @@
 <?php include ('config.php') ?>
 <?php include "header.php" ?>
       <div class="content">
-         <p class="mt-3">
-            <a class="btn btn-primary" data-bs-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
-               Post Job
-            </a>
-         </p>
-         <div class="collapse" id="collapseExample">
-            <div class="card card-body">
-               <form method="POST">
-                  <div class="mb-3">
-                     <label for="companyName" class="form-label">Candidate Name</label>
-                     <input type="text" class="form-control" id="companyName" name="cname">
-                  </div>
-                  <div class="mb-3">
-                     <label for="companyPosition" class="form-label">Position</label>
-                     <input type="text" class="form-control" id="companyPosition" name="pos">
-                  </div>
-                  <div class="mb-3">
-                     <label for="jobDesc" class="form-label">Resume</label>
-                     <textarea class="form-control"  id="jobDesc" cols="30" rows="10" name="resume"></textarea>
-                  </div>
-                  <div class="mb-3">
-                     <label for="ctc" class="form-label">CTC</label>
-                     <input type="text" class="form-control" id="ctc" name="ctc">
-                  </div>
-                  <button type="submit" class="btn btn-primary" name="applyJob">Submit</button>
-               </form>            
-            </div>
-         </div>
          <table class="table table-striped">
             <thead>
                <tr>
                   <th scope="col">#</th>
                   <th scope="col">Candidate Name</th>
-                  <th scope="col">Position</th>
-                  <th scope="col">Resume</th>
-                  
+                  <th scope="col">Applied For</th>
+                  <th scope="col">Quaification</th>
+                  <th scope="col">Passout Year</th>                  
                </tr>
             </thead>
             <tbody>
                <?php
-                  $sql = "Select cName, pos, resume from appliedcandidates";
+                  $sql = "Select `Name`, `Applying For`, `Qualification`, `Year Passout` FROM `canditate`";
                   $result = mysqli_query($conn, $sql);
                   if($result ->num_rows > 0){
                      $i = 0;
                      while($rows =$result->fetch_assoc()){
                         echo"<tr>
                               <th scope='row'>".++$i."</th>
-                              <td>".$rows['cName']."</td>
-                              <td>".$rows['pos']."</td>
-                              <td><a class='fa fa-download text-center' style='color: black;'></a>  ".$rows['resume']."</td>
+                              <td>".$rows['Name']."</td>
+                              <td>".$rows['Applying For']."</td>
+                              <td>".$rows['Qualification']."</td>
+                              <td>".$rows['Year Passout']."</td>
                            </tr>";
                      }
                   } else{
