@@ -67,7 +67,7 @@ if(isset($_POST['appliedJob'])){
    $qual = $_POST['qual'];
    $yearPass = $_POST['yearPass'];
    $resume = $_POST['resume'];
-   $sql = "INSERT INTO `canditate`(`Name`, `Applying For`, `Qualification`, `Year Passout`, `Resume Link`) VALUES ('$canName','$compName', 'qual', '$yearPass', '$resume')";
+   $sql = "INSERT INTO `canditate`(`Name`, `Applying For`, `Qualification`, `Year Passout`, `Resume Link`) VALUES ('$canName','$compName', '$qual', '$yearPass', '$resume')";
    if(mysqli_query($conn,$sql)){
       echo "";
    } else{
